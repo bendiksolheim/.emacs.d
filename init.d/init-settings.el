@@ -1,11 +1,6 @@
 ;; Yes or no prompts
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; nxml-mode
-(setq nxml-child-indent 4
-      nxml-attribute-indent 4
-      nxml-slash-auto-complete-flag t)
-
 ;; General settings
 (setq tab-width 4
       indent-tabs-mode nil)
