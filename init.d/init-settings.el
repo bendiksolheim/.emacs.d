@@ -5,7 +5,6 @@
 (setq nxml-child-indent 4
       nxml-attribute-indent 4
       nxml-slash-auto-complete-flag t)
-(setq evil-want-C-u-scroll t)
 
 ;; General settings
 (setq tab-width 4

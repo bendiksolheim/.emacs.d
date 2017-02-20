@@ -1,5 +1,7 @@
 (require 'req-package)
 
+;; Somehow does not work setting this in :init
+(setq evil-want-C-u-scroll t)
 (req-package evil
     :require (evil-leader relative-line-numbers)
     :config
