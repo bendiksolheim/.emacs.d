@@ -17,6 +17,7 @@
       (dolist (group '(("b" . "buffer")
                        ("c" . "compile")
                        ("e" . "emacs")
+                       ("f" . "file")
                        ("p" . "project")
                        ("w" . "window")))
         (init/evil-leader-group (car group) (cdr group)))
@@ -31,6 +32,7 @@
         "bK" 'kill-buffer
         "bl" 'helm-buffers-list
         "ec" 'init/edit-emacs-config
+        "fr" 'revert-buffer
         "pf" 'helm-projectile-find-file
         "pi" 'projectile-invalidate-cache
         "pl" 'helm-projectile-switch-project
