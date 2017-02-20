@@ -53,6 +53,9 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
+(req-package--log-set-level 'debug)
+
+
 (req-package load-dir
   :force t
   :init
