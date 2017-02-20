@@ -2,8 +2,8 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; General settings
-(setq tab-width 4
-      indent-tabs-mode nil)
+(setq-default tab-width 4
+              indent-tabs-mode nil)
 (setq echo-keystrokes 0.1
       use-dialog-box nil
       visible-bell t)
