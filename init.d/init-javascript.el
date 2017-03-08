@@ -1,11 +1,14 @@
 (require 'req-package)
 
-(req-package js2-mode
+(req-package rjsx-mode
   :defer t
   :mode
-  (("\\.js\\'" . js2-mode))
+  (("\\.js\\'" . rjsx-mode))
   :init
-  (setq js2-strict-missing-semi-warning t))
+  (setq js2-strict-missing-semi-warning t)
+  (setq js2-basic-offset 4)
+  (setq sgml-basic-offset 4)
+  (setq js-indent-level 4))
 
 (req-package json-mode
   :defer t)
