@@ -8,7 +8,6 @@
 	company-require-match nil
 	company-dabbrev-downcase nil
 	company-selection-wrap-around t
-	company-tooltip-flip-when-above t
 	company-tooltip-align-annotations t)
   :config
   (global-company-mode t))
