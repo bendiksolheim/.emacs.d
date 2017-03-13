@@ -31,6 +31,7 @@
         "be" 'eval-buffer
         "bK" 'kill-buffer
         "bl" 'helm-buffers-list
+        "br" 'revert-buffer
         "ec" 'init/edit-emacs-config
         "fr" 'revert-buffer
         "pf" 'helm-projectile-find-file
