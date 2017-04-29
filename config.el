@@ -24,6 +24,7 @@
     vc-make-backup-files t))
 
 (add-hook 'before-save-hook 'force-backup-of-buffer)
+(init/setup-backups)
 
 ;; Package Management
 (require 'package)
@@ -67,4 +68,4 @@
   (req-package-finish)
   (init/global-keybindings)
   (init/load-gui))
-  ;;(req-package--log-open-log))
+  ;(req-package--log-open-log))
