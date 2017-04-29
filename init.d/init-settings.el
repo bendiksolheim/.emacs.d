@@ -15,4 +15,6 @@
       mac-command-modifier 'super
       x-select-enable-clipboard t)
 
+(electric-pair-mode 1)
+
 (provide 'init-settings)
