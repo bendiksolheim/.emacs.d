@@ -15,9 +15,10 @@
       (evil-leader/set-leader "<SPC>")
       (global-evil-leader-mode)
       (dolist (group '(("b" . "buffer")
-                       ("c" . "compile")
+                       ("c" . "comment")
                        ("e" . "emacs")
                        ("f" . "file")
+                       ("m" . "major")
                        ("p" . "project")
                        ("w" . "window")))
         (init/evil-leader-group (car group) (cdr group)))
@@ -32,6 +33,7 @@
         "bK" 'kill-buffer
         "bl" 'helm-buffers-list
         "br" 'revert-buffer
+        "cl" 'comment-line
         "ec" 'init/edit-emacs-config
         "fr" 'revert-buffer
         "pf" 'helm-projectile-find-file
