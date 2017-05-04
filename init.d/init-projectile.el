@@ -7,6 +7,7 @@
     (setq projectile-enable-caching t))
   :config
   (progn
+    (setq projectile-mode-line nil)
     (projectile-global-mode)))
 
 (provide 'init-projectile)
