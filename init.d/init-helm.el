@@ -15,6 +15,7 @@
   :require (projectile helm)
   :config
   (progn
+    (setq projectile-completion-system 'helm)
     (helm-projectile-on)))
 
 (provide 'init-helm)
