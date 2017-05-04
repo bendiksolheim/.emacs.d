@@ -8,6 +8,19 @@
     (progn
       (evil-mode 1)))
 
+(defun neotree-project-dir ()
+  "Open Neotree  using the git root"
+  (interactive)
+  (let ((project-dir (projectile-project-root))
+        (file-name (buffer-file-name)))
+    (neotree-toggle)
+    (if project-dir
+        (if (neo-global--window-exists-p)
+            (progn
+              (neotree-dir project-dir)
+              (neotree-find file-name)))
+      (message "Could not find project root."))))
+
 (req-package evil-leader
     :require (helm helm-ag init-keybindings init-utils)
     :config
@@ -40,6 +53,7 @@
         "pi" 'projectile-invalidate-cache
         "pl" 'helm-projectile-switch-project
         "ps" 'helm-projectile-ag
+        "pt" 'neotree-project-dir
         "w/" 'split-window-horizontally
         "w-" 'split-window-vertically
         "wd" 'delete-window
