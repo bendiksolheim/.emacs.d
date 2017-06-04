@@ -56,6 +56,7 @@
         "pt" 'neotree-project-dir
         "w/" 'split-window-horizontally
         "w-" 'split-window-vertically
+        "w=" 'balance-windows
         "wd" 'delete-window
         "C-g" 'keyboard-quit)))
 
