@@ -1,6 +1,7 @@
 (require 'req-package)
 
 (req-package rjsx-mode
+  :require prettier-js
   :defer t
   :mode
   (("\\.js\\'" . rjsx-mode))
@@ -24,6 +25,13 @@
   :defer t
   :init
   (add-to-list 'company-backends 'company-tern))
+
+(req-package prettier-js
+  :init
+  (add-hook 'js2-mode-hook 'prettier-js-mode)
+  (setq prettier-js-args '(
+                           "--single-quote"
+                           )))
 
 (provide 'init-javascript)
     
