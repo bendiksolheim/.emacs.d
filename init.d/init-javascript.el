@@ -9,7 +9,9 @@
   (setq js2-strict-missing-semi-warning t)
   (setq js2-basic-offset 4)
   (setq sgml-basic-offset 4)
-  (setq js-indent-level 4))
+  (setq js-indent-level 4)
+  :config
+  (evil-define-key 'insert rjsx-mode-map (kbd "C-d") 'rjsx-delete-creates-full-tag))
 
 (req-package json-mode
   :defer t)
