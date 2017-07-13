@@ -7,6 +7,6 @@
 	nxml-attribute-indent 4
 	nxml-slash-auto-complete-flag t)
     :config
-    (add-to-lsit 'magic-mode-list '("<\\?xml" . nxml-mode)))
+    (add-to-list 'magic-mode-list '("<\\?xml" . nxml-mode)))
 
 (provide 'init-nxml)
