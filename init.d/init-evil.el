@@ -22,7 +22,7 @@
       (message "Could not find project root."))))
 
 (req-package evil-leader
-    :require (helm helm-ag init-keybindings init-utils)
+    :require (helm helm-ag init-keybindings init-utils avy)
     :config
     (progn
       (evil-leader/set-leader "<SPC>")
@@ -36,6 +36,7 @@
                        ("w" . "window")))
         (init/evil-leader-group (car group) (cdr group)))
       (evil-leader/set-key
+        "<SPC>" 'avy-goto-char
         "1" 'select-window-1
         "2" 'select-window-2
         "3" 'select-window-3
