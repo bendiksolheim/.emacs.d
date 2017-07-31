@@ -67,4 +67,9 @@
   (progn
     (global-relative-line-numbers-mode)))
 
+(req-package evil-surround
+  :require evil
+  :config
+  (global-evil-surround-mode 1))
+
 (provide 'init-evil)
