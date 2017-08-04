@@ -31,6 +31,7 @@
                        ("c" . "comment")
                        ("e" . "emacs")
                        ("f" . "file")
+                       ("g" . "magit")
                        ("m" . "major")
                        ("p" . "project")
                        ("w" . "window")))
@@ -51,9 +52,11 @@
         "cl" 'comment-line
         "ec" 'init/edit-emacs-config
         "fr" 'revert-buffer
+        "gs" 'magit-status
         "pf" 'helm-projectile-find-file
         "pi" 'projectile-invalidate-cache
         "pl" 'helm-projectile-switch-project
+        "pg" 'projectile-vc
         "ps" 'helm-projectile-ag
         "pt" 'neotree-project-dir
         "w/" 'split-window-horizontally
