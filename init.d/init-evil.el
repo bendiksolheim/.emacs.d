@@ -3,10 +3,15 @@
 ;; Somehow does not work setting this in :init
 (setq evil-want-C-u-scroll t)
 (req-package evil
-    :require (evil-leader relative-line-numbers)
+    :require (evil-leader linum-relative)
     :config
     (progn
       (evil-mode 1)))
+
+(req-package linum-relative
+  :config
+  (linum-mode)
+  (linum-relative-global-mode))
 
 (defun neotree-project-dir ()
   "Open Neotree  using the git root"
@@ -64,11 +69,6 @@
         "w=" 'balance-windows
         "wd" 'delete-window
         "C-g" 'keyboard-quit)))
-
-(req-package relative-line-numbers
-  :config
-  (progn
-    (global-relative-line-numbers-mode)))
 
 (req-package evil-surround
   :require evil
