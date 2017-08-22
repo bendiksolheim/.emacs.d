@@ -40,13 +40,11 @@
     (set-char-table-range composition-function-table (car char-regexp)
                           `([,(cdr char-regexp) 0 font-shape-gstring]))))
 
-(req-package powerline)
-
 (req-package undo-tree
   :diminish undo-tree-mode)
 
-(req-package spacemacs-theme
-  :require powerline)
+(defun init/set-fonts ()
+  (set-face-attribute 'default nil :height 140))
 
 (defun init/set-gui ()
   (scroll-bar-mode -1)
@@ -55,15 +53,15 @@
   (global-hl-line-mode 1)
   (blink-cursor-mode 0))
 
-(defun init/set-fonts ()
-  (set-face-attribute 'default nil :height 140))
-
 (defun init/load-gui ()
-  "Load theme"
+  "Set fonts and disable som GUI stuff"
   (interactive)
   (init/set-fonts)
-  (init/set-gui)
-  (powerline-default-theme)
-  (load-theme 'spacemacs-dark t))
+  (init/set-gui))
+
+(req-package doom-themes
+  :require telephone-line
+  :config
+  (load-theme 'doom-one))
 
 (provide 'init-theme)
