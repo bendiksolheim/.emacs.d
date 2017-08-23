@@ -23,7 +23,7 @@
     backup-directory-alist '(("" . "~/.emacs.d/backups/per-save"))
     vc-make-backup-files t))
 
-(add-hook 'before-save-hook 'force-backup-of-buffer)
+(add-hook 'before-save-hook 'init/force-backup-of-buffer)
 (init/setup-backups)
 
 ;; Package Management
