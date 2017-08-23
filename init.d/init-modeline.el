@@ -86,19 +86,5 @@
                    telephone-line-process-segment))))
 
   (telephone-line-mode t))
-  ; Modeline setup
-  ;; (setq telephone-line-lhs
-  ;;       '((evil . (telephone-line-evil-tag-segment))
-  ;;         (evil . (telephone-line-airline-position-segment))
-  ;;         (accent . (telephone-line-vs-segment
-  ;;                    telephone-line-erc-modified-channels-segment
-  ;;                    telephone-line-process-segment))
-  ;;         (nil . (telephone-line-minor-mode-segment
-  ;;                 telephone-line-buffer-segment))))
-  ;; (setq telephone-line-rhs
-  ;;       '((nil . (telephone-line-misc-info-segment))
-  ;;         (accent . (telephone-line-major-mode-segment))))
-  ;; (telephone-line-mode t))
-  ;; (telephone-line-evil-config))
 
 (provide 'init-modeline)
