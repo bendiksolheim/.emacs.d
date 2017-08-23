@@ -51,6 +51,7 @@
         "5" 'select-window-5
         "6" 'select-window-6
         "be" 'eval-buffer
+        "bi" 'init/open-in-intellij
         "bk" 'kill-buffer
         "bK" 'init/kill-other-buffers
         "bl" 'helm-buffers-list
