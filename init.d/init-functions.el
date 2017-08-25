@@ -1,6 +1,6 @@
 (defun init/osascript-activate (app)
   "Run applescript to activate application"
-  (shell-command (format "osascript e 'tell application \"%s\" to activate'" app)))
+  (shell-command (format "osascript -e 'tell application \"%s\" to activate'" app)))
 
 (defun init/project-root ()
   "Get project root without throwing"
