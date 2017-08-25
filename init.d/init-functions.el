@@ -23,4 +23,20 @@
        (format cmd root))))
   (init/osascript-activate "IntelliJ IDEA"))
 
+(defun init/open-in-android-studio ()
+  "Opens current file in Android Studio"
+  (interactive)
+  (shell-command
+   (let* ((cmd "/Applications/Android\\ Studio.app/Contents/MacOS/studio %s")
+          (args " --line %d %s")
+          (root (init/project-root))
+          (file-name (buffer-file-name)))
+     (if file-name
+         (format (concat cmd args)
+                 root
+                 (line-number-at-pos)
+                 (shell-quote-argument file-name))
+       (format cmd root))))
+  (init/osascript-activate "Android Studio"))
+
 (provide 'init-functions)

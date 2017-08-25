@@ -50,6 +50,7 @@
         "4" 'select-window-4
         "5" 'select-window-5
         "6" 'select-window-6
+        "ba" 'init/open-in-android-studio
         "be" 'eval-buffer
         "bi" 'init/open-in-intellij
         "bk" 'kill-buffer
