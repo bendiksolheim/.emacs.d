@@ -1,4 +1,4 @@
-(require 'req-package)
+
 
 ;; Somehow does not work setting this in :init
 (setq evil-want-C-u-scroll t)
@@ -33,11 +33,11 @@
     (progn
       (evil-leader/set-leader "<SPC>")
       (global-evil-leader-mode)
-      (dolist (group '(("b" . "buffer")
+      (dolist (group '(("a" . "apps")
+                       ("b" . "buffer")
                        ("c" . "comment")
                        ("e" . "emacs")
                        ("f" . "file")
-                       ("g" . "magit")
                        ("m" . "major")
                        ("p" . "project")
                        ("w" . "window")))
@@ -50,6 +50,7 @@
         "4" 'select-window-4
         "5" 'select-window-5
         "6" 'select-window-6
+        "am" 'magit-status
         "ba" 'init/open-in-android-studio
         "be" 'eval-buffer
         "bi" 'init/open-in-intellij
@@ -60,7 +61,6 @@
         "cl" 'comment-line
         "ec" 'init/edit-emacs-config
         "fr" 'revert-buffer
-        "gs" 'magit-status
         "pf" 'helm-projectile-find-file
         "pi" 'projectile-invalidate-cache
         "pl" 'helm-projectile-switch-project
