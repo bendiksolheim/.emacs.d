@@ -9,7 +9,8 @@
     (bind-key "C-k" 'helm-previous-line helm-map)
     (helm-mode 1)))
 
-(req-package helm-ag)
+(req-package helm-ag
+  :require helm)
 
 (req-package helm-projectile
   :require (projectile helm)
