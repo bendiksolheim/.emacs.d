@@ -1,4 +1,4 @@
-
+(require 'req-package)
 
 ;; Somehow does not work setting this in :init
 (setq evil-want-C-u-scroll t)
