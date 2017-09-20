@@ -6,7 +6,8 @@
               indent-tabs-mode nil)
 (setq echo-keystrokes 0.1
       use-dialog-box nil
-      visible-bell t)
+      visible-bell nil
+      ring-bell-function 'ignore)
 (show-paren-mode t)
 (setq mac-option-key-is-meta t
       mac-option-modifier 'meta
