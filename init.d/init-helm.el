@@ -10,13 +10,12 @@
     (helm-mode 1)))
 
 (req-package helm-ag
-  :require helm)
+  :require (helm ag))
 
 (req-package helm-projectile
-  :require (projectile helm)
+  :require (helm projectile)
   :config
-  (progn
-    (setq projectile-completion-system 'helm)
-    (helm-projectile-on)))
+  (setq projectile-completion-system 'helm)
+  (helm-projectile-on))
 
 (provide 'init-helm)
