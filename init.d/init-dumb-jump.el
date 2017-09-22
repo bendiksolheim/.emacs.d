@@ -5,6 +5,7 @@
   :config
   (init/evil-leader-group "g" "goto")
   (evil-leader/set-key
+    "gb" 'dumb-jump-back
     "gg" 'dumb-jump-go
     "go" 'dumb-jump-go-other-window)
   (setq dumb-jump-selector 'helm
