@@ -56,7 +56,6 @@
 
 (req-package--log-set-level 'debug)
 
-
 (req-package load-dir
   :force t
   :init
