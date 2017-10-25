@@ -26,7 +26,7 @@
       (message "Could not find project root."))))
 
 (req-package evil-leader
-    :require (evil helm init-keybindings init-utils avy)
+    :require (evil helm helm-swoop init-keybindings init-utils avy)
     :config
     (progn
       (evil-leader/set-leader "<SPC>")
@@ -56,6 +56,7 @@
         "bK" 'init/kill-other-buffers
         "bl" 'helm-buffers-list
         "br" 'revert-buffer
+        "bs" 'helm-swoop
         "cl" 'comment-line
         "ec" 'init/edit-emacs-config
         "fr" 'revert-buffer
