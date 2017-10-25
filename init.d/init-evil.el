@@ -1,12 +1,10 @@
 (require 'req-package)
 
 ;; Somehow does not work setting this in :init
-(setq evil-want-C-u-scroll t)
 (req-package evil
-    :require (evil-leader linum-relative)
-    :config
-    (progn
-      (evil-mode 1)))
+  :require (linum-relative)
+  :init
+  (setq evil-want-C-u-scroll t))
 
 (req-package linum-relative
   :diminish linum-relative-mode
@@ -28,7 +26,7 @@
       (message "Could not find project root."))))
 
 (req-package evil-leader
-    :require (helm helm-ag init-keybindings init-utils avy)
+    :require (evil helm helm-ag init-keybindings init-utils avy)
     :config
     (progn
       (evil-leader/set-leader "<SPC>")
@@ -71,7 +69,8 @@
         "w-" 'split-window-vertically
         "w=" 'balance-windows
         "wd" 'delete-window
-        "C-g" 'keyboard-quit)))
+        "C-g" 'keyboard-quit))
+    (evil-mode 1))
 
 (req-package evil-surround
   :require evil
