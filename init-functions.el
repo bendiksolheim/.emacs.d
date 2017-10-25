@@ -1,3 +1,5 @@
+(require 'projectile)
+
 (defun init/osascript-activate (app)
   "Run applescript to activate application"
   (shell-command (format "osascript -e 'tell application \"%s\" to activate'" app)))
@@ -40,3 +42,4 @@
   (init/osascript-activate "Android Studio"))
 
 (provide 'init-functions)
+

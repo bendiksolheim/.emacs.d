@@ -50,6 +50,7 @@
 (require-package 'load-dir)
 (require 'req-package)
 (require 'load-dir)
+(load "~/.emacs.d/init-functions.el")
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
