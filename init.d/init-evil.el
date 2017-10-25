@@ -26,7 +26,7 @@
       (message "Could not find project root."))))
 
 (req-package evil-leader
-    :require (evil helm helm-ag init-keybindings init-utils avy)
+    :require (evil helm init-keybindings init-utils avy)
     :config
     (progn
       (evil-leader/set-leader "<SPC>")
@@ -63,7 +63,7 @@
         "pi" 'projectile-invalidate-cache
         "pl" 'helm-projectile-switch-project
         "pg" 'projectile-vc
-        "ps" 'helm-projectile-ag
+        "ps" 'helm-project-ag
         "pt" 'neotree-project-dir
         "w/" 'split-window-horizontally
         "w-" 'split-window-vertically
