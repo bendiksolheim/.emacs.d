@@ -18,4 +18,7 @@
   (setq projectile-completion-system 'helm)
   (helm-projectile-on))
 
+(req-package helm-swoop
+  :require helm)
+
 (provide 'init-helm)
