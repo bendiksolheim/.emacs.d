@@ -42,14 +42,32 @@
         ((not (boundp 'evil-state)) 'mode-line)
         (t (intern (concat "telephone-custom-evil-" (symbol-name evil-state))))))
 
+(defun custom-modeline-modified ()
+  (let* ((config-alist
+            '(("*" all-the-icons-faicon-family all-the-icons-faicon "chain-broken" :height 1.2 :v-adjust -0.0)
+              ("-" all-the-icons-faicon-family all-the-icons-faicon "link" :height 1.2 :v-adjust -0.0)
+              ("%" all-the-icons-octicon-family all-the-icons-octicon "lock" :height 1.2 :v-adjust 0.1)))
+           (result (cdr (assoc (format-mode-line "%*") config-alist))))
+      (propertize (apply (cadr result) (cddr result))
+                  'face `(:family ,(funcall (car result))))))
+
 (req-package telephone-line
-  :require evil
+  :require evil all-the-icons
   :config
-  (require 'telephone-line-config)
+  ;;(require 'telephone-line-config)
 
   ; Custom segments
+  (telephone-line-defsegment* major-mode-segment ()
+    (format "%s"
+            (propertize (all-the-icons-icon-for-buffer)
+                        'help-echo (format "Major-mode: `%s`" major-mode)
+                        'face `(:height 1.2 :v-adjust -0.0 :family ,(all-the-icons-icon-family-for-buffer)))))
+
   (telephone-line-defsegment* buffer-name-segment ()
-    mode-line-buffer-identification)
+    (format "%s %s"
+            (custom-modeline-modified)
+            (buffer-name)))
+    ;mode-line-buffer-identification)
 
   (telephone-line-defsegment* buffer-status-segment ()
     `(""
@@ -76,13 +94,12 @@
 
   (setq telephone-line-lhs
         '((evil   . (telephone-line-airline-position-segment))
-          (accent . (telephone-line-major-mode-segment))
+          (accent . (major-mode-segment))
           (accent . (telephone-line-minor-mode-segment))
           (nil    . (buffer-name-segment))))
 
   (setq telephone-line-rhs
         '((nil    . (telephone-line-misc-info-segment))
-          (accent . (buffer-status-segment))
           (evil . (telephone-line-vc-segment
                    telephone-line-erc-modified-channels-segment
                    telephone-line-process-segment))))
