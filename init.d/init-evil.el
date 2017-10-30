@@ -1,10 +1,10 @@
 (require 'req-package)
 
+(setq evil-want-C-u-scroll t)
+
 ;; Somehow does not work setting this in :init
 (req-package evil
-  :require (linum-relative)
-  :init
-  (setq evil-want-C-u-scroll t))
+  :require linum-relative)
 
 (req-package linum-relative
   :diminish linum-relative-mode
