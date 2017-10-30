@@ -60,9 +60,11 @@
   (init/set-gui))
 
 (req-package doom-themes
-  :require telephone-line
+  :require telephone-line all-the-icons
   :config
   (load-theme 'doom-one))
+
+(req-package all-the-icons)
 
 (provide 'init-theme)
 
