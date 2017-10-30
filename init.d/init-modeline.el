@@ -1,4 +1,5 @@
 (require 'req-package)
+(require 'evil)
 
 (defface telephone-custom-evil-insert
   '((t (:background "forest green" :inherit telephone-line-evil)))
@@ -42,6 +43,7 @@
         (t (intern (concat "telephone-custom-evil-" (symbol-name evil-state))))))
 
 (req-package telephone-line
+  :require evil
   :config
   (require 'telephone-line-config)
 
