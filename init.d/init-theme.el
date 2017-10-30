@@ -8,7 +8,7 @@
  ((find-font (font-spec :family "Menlo"))
   (set-frame-font "Menlo:pixelsize=12"))
  ((find-font (font-spec :family "Monaco"))
-  (set-fram-font "Monaco:pixelsize=12")))
+  (set-frame-font "Monaco:pixelsize=12")))
 
 (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
                (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
@@ -65,3 +65,4 @@
   (load-theme 'doom-one))
 
 (provide 'init-theme)
+
