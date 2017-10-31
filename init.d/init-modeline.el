@@ -51,6 +51,9 @@
       (propertize (apply (cadr result) (cddr result))
                   'face `(:family ,(funcall (car result))))))
 
+(telephone-line-defsegment* buffer-position-segment ()
+  `((-3 "%p") (" %4l:%3c")))
+
 (req-package telephone-line
   :require evil all-the-icons
   :config
@@ -93,9 +96,8 @@
         telephone-line-evil-use-short-tag t)
 
   (setq telephone-line-lhs
-        '((evil   . (telephone-line-airline-position-segment))
+        '((evil . (buffer-position-segment))
           (accent . (major-mode-segment))
-          (accent . (telephone-line-minor-mode-segment))
           (nil    . (buffer-name-segment))))
 
   (setq telephone-line-rhs
