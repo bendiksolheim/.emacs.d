@@ -42,12 +42,6 @@
         (init/evil-leader-group (car group) (cdr group)))
       (evil-leader/set-key
         "<SPC>" 'avy-goto-char
-        "1" 'select-window-1
-        "2" 'select-window-2
-        "3" 'select-window-3
-        "4" 'select-window-4
-        "5" 'select-window-5
-        "6" 'select-window-6
         "am" 'magit-status
         "ba" 'init/open-in-android-studio
         "be" 'eval-buffer
