@@ -69,7 +69,7 @@
   (telephone-line-defsegment* buffer-name-segment ()
     (format "%s %s"
             (custom-modeline-modified)
-            (buffer-name)))
+            (propertize (buffer-name) 'help-echo (buffer-file-name))))
     ;mode-line-buffer-identification)
 
   (telephone-line-defsegment* buffer-status-segment ()
