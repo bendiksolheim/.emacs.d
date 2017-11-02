@@ -44,8 +44,8 @@
 
 (defun custom-modeline-modified ()
   (let* ((config-alist
-            '(("*" all-the-icons-faicon-family all-the-icons-faicon "chain-broken" :height 1.2 :v-adjust -0.0)
-              ("-" all-the-icons-faicon-family all-the-icons-faicon "link" :height 1.2 :v-adjust -0.0)
+            '(("*" all-the-icons-octicon-family all-the-icons-octicon "x" :height 1.2 :v-adjust -0.0)
+              ("-" all-the-icons-octicon-family all-the-icons-octicon "check" :height 1.2 :v-adjust -0.0)
               ("%" all-the-icons-octicon-family all-the-icons-octicon "lock" :height 1.2 :v-adjust 0.1)))
            (result (cdr (assoc (format-mode-line "%*") config-alist))))
       (propertize (apply (cadr result) (cddr result))
