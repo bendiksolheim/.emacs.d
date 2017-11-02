@@ -102,9 +102,7 @@
 
   (setq telephone-line-rhs
         '((nil    . (telephone-line-misc-info-segment))
-          (evil . (telephone-line-vc-segment
-                   telephone-line-erc-modified-channels-segment
-                   telephone-line-process-segment))))
+          (evil . (telephone-line-vc-segment))))
 
   (telephone-line-mode t))
 
