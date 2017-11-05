@@ -61,8 +61,8 @@
   :force t
   :init
   (setq force-load-messages nil
-	load-dir-debug t
-	load-dir-recursive t)
+        load-dir-debug t
+        load-dir-recursive t)
   :config
   (load-dir-one "~/.emacs.d/init.d")
   (req-package-finish)
