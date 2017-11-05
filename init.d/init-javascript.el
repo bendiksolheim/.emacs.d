@@ -33,7 +33,7 @@
   (add-hook 'js2-mode-hook 'prettier-js-mode)
   (setq prettier-js-args '(
                            "--single-quote"
-                           "--tab-width" "4"
+                           "--tab-width" "2"
                            )))
 
 (provide 'init-javascript)
