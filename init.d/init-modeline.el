@@ -1,109 +1,121 @@
-(require 'req-package)
+(require 'all-the-icons)
 (require 'evil)
 
-(defface telephone-custom-evil-insert
-  '((t (:background "forest green" :inherit telephone-line-evil)))
+;; Track window state
+(defvar mode-line-selected-window nil)
+
+(defun mode-line--set-selected-window ()
+  "Update current active window"
+  (when (not (minibuffer-window-active-p (frame-selected-window)))
+    (setq mode-line-selected-window (frame-selected-window))))
+
+(add-hook 'window-configuration-change-hook #'mode-line--set-selected-window)
+(add-hook 'focus-in-hook #'mode-line--set-selected-window)
+
+(defadvice select-window (after mode-line-select-window activate)
+  "Set telephone-line's selected window value for use in determining the active mode-line."
+  (mode-line--set-selected-window))
+(defadvice select-frame (after mode-line-select-frame activate)
+  "Set telephone-line's selected window value for use in determining the active mode-line."
+  (mode-line--set-selected-window))
+
+(defun mode-line-selected-window-active-p ()
+  "Return whether the current window is active."
+  (eq mode-line-selected-window (selected-window)))
+
+;; Faces
+(defface mode-line-base
+  '((t (:foreground "white" :weight bold)))
+  "Base mode line face"
+  :group 'mode-line-face)
+
+(defface mode-line-evil-insert
+  '((t (:background "forest green" :inherit mode-line-base)))
   "Face used in evil color-coded segments when in Insert state."
-  :group 'telephone-line-evil)
+  :group 'mode-line-face)
 
-(defface telephone-custom-evil-normal
-  '((t (:background "violet" :inherit telephone-line-evil)))
+(defface mode-line-evil-normal
+  '((t (:background "violet" :inherit mode-line-base)))
   "Face used in evil color-coded segments when in Normal state."
-  :group 'telephone-line-evil)
+  :group 'mode-line-face)
 
-(defface telephone-custom-evil-visual
-  '((t (:background "dark orange" :inherit telephone-line-evil)))
+(defface mode-line-evil-visual
+  '((t (:background "dark orange" :inherit mode-line-base)))
   "Face used in evil color-coded segments when in Visual{,-Block,-Line} state."
-  :group 'telephone-line-evil)
+  :group 'mode-line-face)
 
-(defface telephone-custom-evil-replace
-  '((t (:background "black" :inherit telephone-line-evil)))
+(defface mode-line-evil-replace
+  '((t (:background "black" :inherit mode-line-base)))
   "Face used in evil color-coded segments when in Replace state."
-  :group 'telephone-line-evil)
+  :group 'mode-line-face)
 
-(defface telephone-custom-evil-motion
-  '((t (:background "dark blue" :inherit telephone-line-evil)))
+(defface mode-line-evil-motion
+  '((t (:background "dark blue" :inherit mode-line-base)))
   "Face used in evil color-coded segments when in Motion state."
-  :group 'telephone-line-evil)
+  :group 'mode-line-face)
 
-(defface telephone-custom-evil-operator
-  '((t (:background "violet" :inherit telephone-line-evil)))
+(defface mode-line-evil-operator
+  '((t (:background "violet" :inherit mode-line-base)))
   "Face used in evil color-coded segments when in Operator state."
-  :group 'telephone-line-evil)
+  :group 'mode-line-face)
 
-(defface telephone-custom-evil-emacs
-  '((t (:background "dark violet" :inherit telephone-line-evil)))
+(defface mode-line-evil-emacs
+  '((t (:background "dark violet" :inherit mode-line-base)))
   "Face used in evil color-coded segments when in Emacs state."
-  :group 'telephone-line-evil)
+  :group 'mode-line-face)
 
-(defun telephone-custom-evil-face (active)
+;; Functions
+(defun mode-line-evil-face (active)
   "Return an appropriate face for the current mode, given whether the frame is ACTIVE."
   (cond ((not active) 'mode-line-inactive)
         ((not (boundp 'evil-state)) 'mode-line)
-        (t (intern (concat "telephone-custom-evil-" (symbol-name evil-state))))))
+        (t (intern (concat "mode-line-evil-" (symbol-name evil-state))))))
 
 (defun custom-modeline-modified ()
   (let* ((config-alist
-            '(("*" all-the-icons-octicon-family all-the-icons-octicon "x" :height 1.2 :v-adjust -0.0)
-              ("-" all-the-icons-octicon-family all-the-icons-octicon "check" :height 1.2 :v-adjust -0.0)
-              ("%" all-the-icons-octicon-family all-the-icons-octicon "lock" :height 1.2 :v-adjust 0.1)))
-           (result (cdr (assoc (format-mode-line "%*") config-alist))))
-      (propertize (apply (cadr result) (cddr result))
-                  'face `(:family ,(funcall (car result))))))
+          '(("*" . "change_history")
+            ("-" . "done")
+            ("%" . "lock")))
+         (result (cdr (assoc (format-mode-line "%*") config-alist))))
+    (propertize (all-the-icons-material (cdr result))
+                'face `(:family ,(all-the-icons-material-family)))))
 
-(telephone-line-defsegment* buffer-position-segment ()
-  `((-3 "%p") (" %4l:%3c")))
+;; Segments
+(defvar fake-height-segment
+  (propertize " " 'display '(height 2))
+  "Empty segment to force specific height")
 
-(req-package telephone-line
-  :require evil all-the-icons
-  :config
-  ;;(require 'telephone-line-config)
+(defvar buffer-status-segment
+  '(:eval (propertize (format "  %s" (custom-modeline-modified))
+                      'face (mode-line-evil-face (mode-line-selected-window-active-p))
+                      'display '(raise 0.2)))
+                      ;; 'display '(height 1.2 raise 0.5)))
+  "Buffer status")
 
-  ; Custom segments
-  (telephone-line-defsegment* major-mode-segment ()
-    (format "%s"
-            (propertize (all-the-icons-icon-for-buffer)
-                        'help-echo (format "Major-mode: `%s`" major-mode)
-                        'face `(:height 1.2 :v-adjust -0.0 :family ,(all-the-icons-icon-family-for-buffer)))))
+(defvar major-mode-segment
+  '(:eval (propertize (format "  %s" (all-the-icons-icon-for-buffer))
+                      'help-echo (format "%s" major-mode)
+                      'face `(:family (,(all-the-icons-icon-family-for-buffer)) :foreground "white")
+                      'display '(raise 0.3)))
+  "Major mode")
 
-  (telephone-line-defsegment* buffer-name-segment ()
-    (format "%s %s"
-            (custom-modeline-modified)
-            (propertize (buffer-name) 'help-echo (buffer-file-name))))
-    ;mode-line-buffer-identification)
+(defvar buffer-name-segment
+  '(:eval (propertize "  %b  "
+                      'face (mode-line-evil-face (mode-line-selected-window-active-p))
+                      'display '(raise 0.3)
+                      'help-echo (buffer-file-name)))
+  "Buffer name")
 
-  (telephone-line-defsegment* buffer-status-segment ()
-    `(""
-      mode-line-mule-info
-      mode-line-modified
-      mode-line-client
-      mode-line-remote
-      mode-line-frame-identification))
+(defvar buffer-position-segment
+  '(:eval (propertize "  %p %4l:%3c"
+                      'face 'mode-line-base
+                      'display '(raise 0.3)))
+  "Cursor position")
 
-  ; Define custom faces so we get better colors
-  (setq telephone-line-faces
-        '((evil . telephone-custom-evil-face)
-          (accent . (telephone-line-accent-active . telephone-line-accent-inactive))
-          (nil . (mode-line . mode-line-inactive))))
-
-  ; Flat separators all over the place
-  (setq telephone-line-primary-left-separator 'telephone-line-flat
-        telephone-line-secondary-left-separator 'telephone-line-flat
-        telephone-line-primary-right-separator 'telephone-line-flat
-        telephone-line-secondary-right-separator 'telephone-line-flat)
-
-  (setq telephone-line-height 34
-        telephone-line-evil-use-short-tag t)
-
-  (setq telephone-line-lhs
-        '((evil . (buffer-position-segment))
-          (accent . (major-mode-segment))
-          (nil    . (buffer-name-segment))))
-
-  (setq telephone-line-rhs
-        '((nil    . (telephone-line-misc-info-segment))
-          (evil . (telephone-line-vc-segment))))
-
-  (telephone-line-mode t))
-
-(provide 'init-modeline)
+;; Set mode line format
+(setq-default mode-line-format
+              (list buffer-status-segment
+                    buffer-name-segment
+                    major-mode-segment
+                    buffer-position-segment
+                    fake-height-segment))
