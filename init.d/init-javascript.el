@@ -1,15 +1,15 @@
 (require 'req-package)
 
 (req-package rjsx-mode
-  :require prettier-js
   :defer t
   :mode
   (("\\.js\\'" . rjsx-mode))
   :init
-  (setq js2-strict-missing-semi-warning t)
-  (setq js2-basic-offset 4)
-  (setq sgml-basic-offset 4)
-  (setq js-indent-level 4)
+  (setq js2-mode-show-strict-warnings nil)
+  (setq js2-mode-show-parse-errors nil)
+  (setq js2-basic-offset 2)
+  (setq sgml-basic-offset 2)
+  (setq js-indent-level 2)
   :config
   (evil-define-key 'insert rjsx-mode-map (kbd "C-d") 'rjsx-delete-creates-full-tag))
 
