@@ -7,3 +7,4 @@ projectile.cache
 frame
 abbrev_defs
 *.elc
+eshell
