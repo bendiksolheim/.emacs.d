@@ -9,6 +9,7 @@ I have no idea about Emacs requirements. Guessing at least 25.
 - [[https://github.com/ggreer/the_silver_searcher][The silver searcher]]
 - [[https://git-scm.com/][Git]]
 - [[https://github.com/tonsky/FiraCode][Fira Code]]
+- [[https://github.com/ternjs/tern][Tern]]
 
 ** Installation
 
