@@ -1,0 +1,22 @@
+* .emacs.d
+
+Evil based Emacs config. Uses [[https://www.gnu.org/software/emacs/][req-package]] to load packages and handle dependencies.
+
+** Requirements
+
+I have node idea about Emacs requirements. Guessing at least 25.
+
+- [[https://github.com/ggreer/the_silver_searcher][The silver searcher]]
+- [[https://git-scm.com/][Git]]
+- [[https://github.com/tonsky/FiraCode][Fira Code]]
+
+** Installation
+
+Note: I have only tried this on macOS, so it might not work on other platforms. Open an issue if it fails miserably
+
+#+BEGIN_SRC
+git clone https://github.com/bendiksolheim/.emacs.d
+# Open Emacs, wait till things are installed
+# In emacs:
+M-x all-the-icons-install-fonts
+#+END_SRC
