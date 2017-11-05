@@ -7,7 +7,6 @@
   :require linum-relative)
 
 (req-package linum-relative
-  :diminish linum-relative-mode
   :config
   (linum-mode)
   (linum-relative-global-mode))

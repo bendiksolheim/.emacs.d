@@ -40,8 +40,7 @@
     (set-char-table-range composition-function-table (car char-regexp)
                           `([,(cdr char-regexp) 0 font-shape-gstring]))))
 
-(req-package undo-tree
-  :diminish undo-tree-mode)
+(req-package undo-tree)
 
 (defun init/set-fonts ()
   (set-face-attribute 'default nil :height 140))

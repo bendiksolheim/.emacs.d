@@ -1,7 +1,6 @@
 (require 'req-package)
 
 (req-package flycheck
-  :diminish flycheck-mode
   :config
   (global-flycheck-mode t)
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc

@@ -1,7 +1,6 @@
 (require 'req-package)
 
 (req-package helm
-  :diminish helm-mode
   :config
   (progn
     (require 'helm-config)

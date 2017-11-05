@@ -1,7 +1,6 @@
 (require 'req-package)
 
 (req-package company
-  :diminish company-mode
   :init
   (setq company-idle-delay 0.1
         company-minimum-prefix-length 2
