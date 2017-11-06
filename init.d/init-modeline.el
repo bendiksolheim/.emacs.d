@@ -73,11 +73,11 @@
 
 (defun custom-modeline-modified ()
   (let* ((config-alist
-          '(("*" . "change_history")
-            ("-" . "done")
-            ("%" . "lock")))
-         (result (cdr (assoc (format-mode-line "%*") config-alist))))
-    (propertize (all-the-icons-material (cdr result))
+          '(("*" "change_history")
+            ("-" "done")
+            ("%" "lock")))
+         (result (cadr (assoc (format-mode-line "%*") config-alist))))
+    (propertize (all-the-icons-material result)
                 'face `(:family ,(all-the-icons-material-family)))))
 
 ;; Segments
@@ -89,14 +89,13 @@
   '(:eval (propertize (format "  %s" (custom-modeline-modified))
                       'face (mode-line-evil-face (mode-line-selected-window-active-p))
                       'display '(raise 0.2)))
-                      ;; 'display '(height 1.2 raise 0.5)))
   "Buffer status")
 
 (defvar major-mode-segment
-  '(:eval (propertize (format "  %s" (all-the-icons-icon-for-buffer))
+  '(:eval (format "  %s" (propertize (all-the-icons-icon-for-buffer)
                       'help-echo (format "%s" major-mode)
-                      'face `(:family (,(all-the-icons-icon-family-for-buffer)) :foreground "white")
-                      'display '(raise 0.3)))
+                      'face `(:family ,(all-the-icons-icon-family-for-buffer) :foreground "white")
+                      'display '(raise 0.3))))
   "Major mode")
 
 (defvar buffer-name-segment
