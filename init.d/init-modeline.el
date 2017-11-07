@@ -104,11 +104,12 @@
      (propertize (format " . %s" revision) 'face `(:height 0.9)))))
 
 (defun custom-modeline-icon-vc ()
-  (when vc-mode
+  (if vc-mode
     (cond
      ((string-match "Git[:-]" vc-mode) (custom-modeline-github-vc))
      ((string-match "SVN-" vc-mode) (custom-modeline-svn-vc))
-     (t (format "%s" vc-mode)))))
+     (t (format "%s" vc-mode)))
+    ""))
 
 ;;
 ;; Segments
@@ -145,16 +146,28 @@
   "Cursor position")
 
 (defvar vc-segment
-  '(:eval (custom-modeline-icon-vc)))
+  '(:eval (format "%s  " (custom-modeline-icon-vc))))
 
 ;;
-;; Set mode line format
+;; Mode line
 ;;
+
+(defun mode-line-fill (reserve)
+  "Returns enough spaces to push mode line spaces to right"
+  (propertize " "
+              'display `((space :align-to (- (+ right-fringe right-margin)
+                                             ,reserve)))))
+
+(defun mode-line-segment-width (segments right-padding)
+  ""
+  (+ (string-width (format-mode-line segments)) right-padding))
 
 (setq-default mode-line-format
-              (list buffer-status-segment
-                    buffer-name-segment
-                    major-mode-segment
-                    buffer-position-segment
-                    vc-segment
-                    fake-height-segment))
+              `(,buffer-status-segment
+                ,buffer-name-segment
+                ,major-mode-segment
+                ,buffer-position-segment
+                ,fake-height-segment
+                (:eval (mode-line-fill (mode-line-segment-width (custom-modeline-icon-vc) 2)))
+                ,vc-segment))
+
