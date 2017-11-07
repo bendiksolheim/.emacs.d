@@ -1,7 +1,10 @@
 (require 'all-the-icons)
 (require 'evil)
 
+;;
 ;; Track window state
+;;
+
 (defvar mode-line-selected-window nil)
 
 (defun mode-line--set-selected-window ()
@@ -23,7 +26,10 @@
   "Return whether the current window is active."
   (eq mode-line-selected-window (selected-window)))
 
+;;
 ;; Faces
+;;
+
 (defface mode-line-base
   '((t (:foreground "white" :weight bold)))
   "Base mode line face"
@@ -64,7 +70,10 @@
   "Face used in evil color-coded segments when in Emacs state."
   :group 'mode-line-face)
 
+;;
 ;; Functions
+;;
+
 (defun mode-line-evil-face (active)
   "Return an appropriate face for the current mode, given whether the frame is ACTIVE."
   (cond ((not active) 'mode-line-inactive)
@@ -80,7 +89,31 @@
     (propertize (all-the-icons-material result)
                 'face `(:family ,(all-the-icons-material-family)))))
 
+(defun custom-modeline-github-vc ()
+  (let ((branch (mapconcat 'concat (cdr (split-string vc-mode "[:-]")) "-")))
+    (concat
+     (propertize (format "%s" (all-the-icons-octicon "git-branch"))
+                 'face `(:height 1.3 :family ,(all-the-icons-octicon-family))
+                 'display '(raise 0.2))
+     (propertize (format " %s" branch) 'face `(:height 0.9) 'display '(raise 0.4)))))
+
+(defun custom-modeline-svn-vc ()
+  (let ((revision (cadr (split-string vc-mode "-"))))
+    (concat
+     (propertize (format " %s" (all-the-icons-faicon "cloud")) 'face `(:height 1.2) 'display '(raise 0.3))
+     (propertize (format " . %s" revision) 'face `(:height 0.9)))))
+
+(defun custom-modeline-icon-vc ()
+  (when vc-mode
+    (cond
+     ((string-match "Git[:-]" vc-mode) (custom-modeline-github-vc))
+     ((string-match "SVN-" vc-mode) (custom-modeline-svn-vc))
+     (t (format "%s" vc-mode)))))
+
+;;
 ;; Segments
+;;
+
 (defvar fake-height-segment
   (propertize " " 'display '(height 2))
   "Empty segment to force specific height")
@@ -106,15 +139,22 @@
   "Buffer name")
 
 (defvar buffer-position-segment
-  '(:eval (propertize "  %p %4l:%3c"
+  '(:eval (propertize "  %p %4l:%3c  "
                       'face 'mode-line-base
                       'display '(raise 0.3)))
   "Cursor position")
 
+(defvar vc-segment
+  '(:eval (custom-modeline-icon-vc)))
+
+;;
 ;; Set mode line format
+;;
+
 (setq-default mode-line-format
               (list buffer-status-segment
                     buffer-name-segment
                     major-mode-segment
                     buffer-position-segment
+                    vc-segment
                     fake-height-segment))
