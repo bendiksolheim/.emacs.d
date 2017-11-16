@@ -126,10 +126,11 @@
   "Buffer status")
 
 (defvar major-mode-segment
-  '(:eval (format "  %s" (propertize (all-the-icons-icon-for-buffer)
+  '(:eval (propertize (format "  %s" (propertize (all-the-icons-icon-for-buffer)
                       'help-echo (format "%s" major-mode)
                       'face `(:family ,(all-the-icons-icon-family-for-buffer) :foreground "white")
                       'display '(raise 0.3))))
+          'face (mode-line-evil-face (mode-line-selected-window-active-p)))
   "Major mode")
 
 (defvar buffer-name-segment
@@ -141,7 +142,6 @@
 
 (defvar buffer-position-segment
   '(:eval (propertize "  %p %4l:%3c  "
-                      'face 'mode-line-base
                       'display '(raise 0.3)))
   "Cursor position")
 
