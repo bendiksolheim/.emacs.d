@@ -89,7 +89,7 @@
     (propertize (all-the-icons-material result)
                 'face `(:family ,(all-the-icons-material-family)))))
 
-(defun custom-modeline-github-vc ()
+(defun custom-modeline-git-vc ()
   (let ((branch (mapconcat 'concat (cdr (split-string vc-mode "[:-]")) "-")))
     (concat
      (propertize (format "%s" (all-the-icons-octicon "git-branch"))
@@ -106,7 +106,7 @@
 (defun custom-modeline-icon-vc ()
   (if vc-mode
     (cond
-     ((string-match "Git[:-]" vc-mode) (custom-modeline-github-vc))
+     ((string-match "Git[:-]" vc-mode) (custom-modeline-git-vc))
      ((string-match "SVN-" vc-mode) (custom-modeline-svn-vc))
      (t (format "%s" vc-mode)))
     ""))
