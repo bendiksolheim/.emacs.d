@@ -56,7 +56,8 @@
   "Set fonts and disable som GUI stuff"
   (interactive)
   (init/set-fonts)
-  (init/set-gui))
+  (init/set-gui)
+  (setq frame-title-format nil))
 
 (req-package doom-themes
   :require telephone-line all-the-icons
