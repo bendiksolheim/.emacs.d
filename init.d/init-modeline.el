@@ -166,7 +166,6 @@
               `(,buffer-status-segment
                 ,buffer-name-segment
                 ,major-mode-segment
-                ,buffer-position-segment
                 ,fake-height-segment
                 (:eval (mode-line-fill (mode-line-segment-width (custom-modeline-icon-vc) 2)))
                 ,vc-segment))
