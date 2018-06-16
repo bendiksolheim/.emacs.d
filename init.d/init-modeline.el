@@ -78,7 +78,7 @@
   "Return an appropriate face for the current mode, given whether the frame is ACTIVE."
   (cond ((not active) 'mode-line-inactive)
         ((not (boundp 'evil-state)) 'mode-line)
-        (t (intern (concat "mode-line-evil-" (symbol-name evil-state))))))
+        (t (intern (concat "mode-line-evil-" (if evil-state (symbol-name evil-state) "normal"))))))
 
 (defun custom-modeline-modified ()
   (let* ((config-alist
