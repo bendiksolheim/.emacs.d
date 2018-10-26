@@ -2,7 +2,7 @@
 
 (req-package projectile
   :init
-  (setq projectile-indexing-method 'git)
+  (setq projectile-indexing-method 'alien)
   (setq projectile-enable-caching t)
   :config
   (setq projectile-mode-line nil)
