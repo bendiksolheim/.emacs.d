@@ -1,7 +1,4 @@
-(require 'req-package)
-
-(req-package rjsx-mode
-  :defer t
+(use-package rjsx-mode
   :mode
   (("\\.js\\'" . rjsx-mode))
   :init
@@ -13,22 +10,21 @@
   :config
   (evil-define-key 'insert rjsx-mode-map (kbd "C-d") 'rjsx-delete-creates-full-tag))
 
-(req-package json-mode
+(use-package json-mode
   :defer t)
 
-(req-package tern
+(use-package tern
   :defer t
   :init
   (add-hook 'js2-mode-hook 'tern-mode)
  (add-hook 'web-mode-hook 'tern-mode))
 
-(req-package company-tern
-  :require company
-  :defer t
-  :init
-  (add-to-list 'company-backends 'company-tern))
+;;(use-package company-tern
+  ;;:defer t
+  ;;:init
+  ;;(add-to-list 'company-backends 'company-tern))
 
-(req-package prettier-js
+(use-package prettier-js
   :init
   (add-hook 'js2-mode-hook 'prettier-js-mode)
   (setq prettier-js-args '(

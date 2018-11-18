@@ -1,7 +1,4 @@
-(require 'req-package)
-
-(req-package dumb-jump
-  :require (helm evil-leader)
+(use-package dumb-jump
   :config
   (init/evil-leader-group "g" "goto")
   (evil-leader/set-key

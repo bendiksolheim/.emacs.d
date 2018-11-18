@@ -1,5 +1,4 @@
-(require 'req-package)
+(use-package restclient
+  :defer t)
 
-(req-package restclient)
-
-(provide 'rest-client)
+(provide 'init-restclient)

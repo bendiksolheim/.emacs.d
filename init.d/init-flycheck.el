@@ -1,14 +1,10 @@
-(require 'req-package)
-
-(req-package flycheck
-  :ensure t
+(use-package flycheck
   :config
   (global-flycheck-mode t)
   (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc
                                              javascript-jshint
                                              json-jsonlint)))
 
-(req-package helm-flycheck
- :require flycheck)
+(use-package helm-flycheck)
 
 (provide 'init-flycheck)

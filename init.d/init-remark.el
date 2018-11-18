@@ -1,8 +1,5 @@
-(require 'req-package)
-
-(req-package remark-mode
-  :defer t
+(use-package remark-mode
   :mode
-  (("\\.remark\\'" . remark-mode)))
+  ("\\.remark\\'" . remark-mode))
 
 (provide 'init-remark)

@@ -1,20 +1,16 @@
-(require 'req-package)
-
-(req-package helm
+(use-package helm
   :config
-  (progn
-    (require 'helm-config)
-    (bind-key "C-j" 'helm-next-line helm-map)
-    (bind-key "C-k" 'helm-previous-line helm-map)
-    (helm-mode 1)))
+  (require 'helm-config)
+  (bind-key "C-j" 'helm-next-line helm-map)
+  (bind-key "C-k" 'helm-previous-line helm-map)
+  (setq helm-display-function 'pop-to-buffer)
+  (helm-mode 1))
 
-(req-package helm-projectile
-  :require (helm projectile)
+(use-package helm-projectile
   :config
   (setq projectile-completion-system 'helm)
   (helm-projectile-on))
 
-(req-package helm-swoop
-  :require helm)
+(use-package helm-swoop)
 
 (provide 'init-helm)

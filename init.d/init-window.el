@@ -1,6 +1,4 @@
-(require 'req-package)
-
-(req-package ace-window
+(use-package ace-window
   :config
   (setq aw-dispatch-always t)
   (defvar aw-dispatch-alist

@@ -1,7 +1,4 @@
-(require 'req-package)
-
-(req-package elm-mode
-  :require (f s let-alist company)
+(use-package elm-mode
   :mode ("\\.elm\\'" . elm-mode)
   :config
   (setq elm-format-on-save t)
@@ -13,8 +10,7 @@
                             company-backends))))
   (add-hook 'elm-mode-hook 'elm-oracle-setup-completion))
 
-(req-package flycheck-elm
-  :require (flycheck elm-mode)
+(use-package flycheck-elm
   :init
   (add-hook 'flycheck-mode-hook 'flycheck-elm-setup t))
 

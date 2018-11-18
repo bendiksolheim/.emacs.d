@@ -1,6 +1,4 @@
-(require 'req-package)
-
-(req-package markdown-mode
+(use-package markdown-mode
   :init
   (setq markdown-command "multimarkdown"))
 

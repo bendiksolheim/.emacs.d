@@ -2,54 +2,25 @@
       initial-scratch-message nil
       initial-major-mode 'org-mode)
 
-;; Backup files
-;; Make a special "per session" backup at the first save of each
-;; emacs session.
-(defun init/force-backup-of-buffer ()
-  (when (not buffer-backed-up)
-    (let ((backup-directory-alist '(("" . "~/.emacs.d/backups/per-session")))
-        (kept-new-versions 3))
-      (backup-buffer)))
-  
-  (let ((buffer-backed-up nil))
-    (backup-buffer)))
-
-(defun init/setup-backups ()
-  (setq version-control t     ;; Use version numbers for backups
-    kept-new-versions 10  ;; Number of newest versions to keep
-    kept-old-versions 0   ;; Number of oldest versions to keep
-    delete-old-versions t ;; Don’t ask to delete excess backup versions
-    backup-by-copying t   ;; Copy all files, don’t rename them
-    backup-directory-alist '(("" . "~/.emacs.d/backups/per-save"))
-    vc-make-backup-files t))
-
-(add-hook 'before-save-hook 'init/force-backup-of-buffer)
-(init/setup-backups)
+;; Expand load-dir to include custom packages
+(add-to-list 'load-path (expand-file-name "init.d" (file-name-directory load-file-name)))
 
 ;; Package Management
 (require 'package)
 (setq package-enable-at-startup nil)
-(setq package-archives
-      '(("org" . "http://orgmode.org/elpa/")
-        ("melpa" . "https://melpa.org/packages/")
-        ("gnu" . "https://elpa.gnu.org/packages/")))
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
-(defun require-package (package)
-  "refresh package archives, check package presence and install if it's not installed"
-  (if (null (require package nil t))
-      (progn (let* ((ARCHIVES (if (null package-archive-contents)
-                                  (progn (package-refresh-contents)
-                                         package-archive-contents)
-                                package-archive-contents))
-                    (AVAIL (assoc package ARCHIVES)))
-               (if AVAIL
-                   (package-install package)))
-	     (require package))))
 
-(require-package 'req-package)
-(require-package 'load-dir)
-(require 'req-package)
-(require 'load-dir)
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(eval-when-compile
+  (require 'use-package)
+  (setq use-package-always-ensure t))
+
 (load "~/.emacs.d/init-functions.el")
 
 (setenv "PATH" (concat (getenv "PATH") ":~/.npm-package/bin"))
@@ -58,17 +29,46 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
-(req-package--log-set-level 'debug)
+;; Custom functions
+(require 'init-utils)
+(add-hook 'before-save-hook 'init/force-backup-of-buffer)
+(init/setup-backups)
 
-(req-package load-dir
-  :force t
-  :init
-  (setq force-load-messages nil
-        load-dir-debug t
-        load-dir-recursive t)
-  :config
-  (load-dir-one "~/.emacs.d/init.d")
-  (req-package-finish)
-  (init/global-keybindings)
-  (init/load-gui))
-  ;(req-package--log-open-log))
+;; GUI stuff
+(require 'init-theme)
+(init/load-gui)
+
+;; Global packages
+(require 'init-window-restore)
+(require 'init-settings)
+(require 'init-general)
+(require 'init-evil)
+(require 'init-modeline)
+(require 'init-which-key)
+(require 'init-window)
+(require 'init-company)
+(require 'init-projectile)
+(require 'init-helm)
+(require 'init-magit)
+(require 'init-shackle)
+(require 'init-anzu)
+(require 'init-avy)
+;;(require 'init-dumb-jump)
+(require 'init-flycheck)
+(require 'init-neotree)
+(require 'init-restclient)
+
+;; Languages
+(require 'init-elm)
+(require 'init-javascript)
+(require 'init-haskell)
+(require 'init-html)
+(require 'init-kotlin)
+(require 'init-markdown)
+;;(require 'init-nxml)
+(require 'init-remark)
+(require 'init-vue)
+
+;; Finally, activate sane key bindings
+(require 'init-keybindings)
+(init/global-keybindings)

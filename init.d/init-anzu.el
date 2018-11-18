@@ -1,7 +1,4 @@
-(require 'req-package)
-
-(req-package evil-anzu
-  :require evil
+(use-package evil-anzu
   :config
   (global-anzu-mode 1))
 

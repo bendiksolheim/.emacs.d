@@ -1,11 +1,8 @@
-(require 'req-package)
-
-(req-package kotlin-mode
+(use-package kotlin-mode
   :init
   (setq kotlin-tab-width 4))
 
-(req-package flycheck-kotlin
-  :require flycheck
+(use-package flycheck-kotlin
   :init
   (add-to-list 'flycheck-checkers 'kotlin-klint))
 
