@@ -1,9 +1,12 @@
 (use-package magit
+  :defer t
   :init
   (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
   (setq magit-section-initial-visibility-alist (quote ((untracked . hide)))))
 
 (use-package evil-magit
+  :defer t
+  :commands magit-status
   :config
   (require 'evil-magit))
 

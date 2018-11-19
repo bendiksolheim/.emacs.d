@@ -1,6 +1,6 @@
 (use-package rjsx-mode
   :mode
-  (("\\.js\\'" . rjsx-mode))
+  ("\\.js\\'" . rjsx-mode)
   :init
   (setq js2-mode-show-strict-warnings nil)
   (setq js2-mode-show-parse-errors nil)
@@ -11,13 +11,14 @@
   (evil-define-key 'insert rjsx-mode-map (kbd "C-d") 'rjsx-delete-creates-full-tag))
 
 (use-package json-mode
-  :defer t)
+  :mode
+  ("\\.json\\'" . json-mode))
 
 (use-package tern
   :defer t
   :init
   (add-hook 'js2-mode-hook 'tern-mode)
- (add-hook 'web-mode-hook 'tern-mode))
+  (add-hook 'web-mode-hook 'tern-mode))
 
 ;;(use-package company-tern
   ;;:defer t
@@ -33,4 +34,3 @@
                            )))
 
 (provide 'init-javascript)
-    

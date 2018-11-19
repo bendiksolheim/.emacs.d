@@ -1,4 +1,6 @@
 (use-package kotlin-mode
+  :mode
+  ("\\.kt\\'" . kotlin-mode)
   :init
   (setq kotlin-tab-width 4))
 
