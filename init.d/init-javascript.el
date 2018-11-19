@@ -1,6 +1,5 @@
 (use-package rjsx-mode
-  :mode
-  ("\\.js\\'" . rjsx-mode)
+  :mode "\\.js\\'"
   :init
   (setq js2-mode-show-strict-warnings nil)
   (setq js2-mode-show-parse-errors nil)
@@ -11,8 +10,7 @@
   (evil-define-key 'insert rjsx-mode-map (kbd "C-d") 'rjsx-delete-creates-full-tag))
 
 (use-package json-mode
-  :mode
-  ("\\.json\\'" . json-mode))
+  :mode "\\.json\\'")
 
 (use-package tern
   :defer t
