@@ -61,9 +61,9 @@
 
 ;; Languages
 (require 'init-elm)
-(require 'init-javascript)
 (require 'init-haskell)
 (require 'init-html)
+(require 'init-javascript) ;; Must be after html for rjsx-mode to autoload for js files
 (require 'init-kotlin)
 (require 'init-markdown)
 ;;(require 'init-nxml)
