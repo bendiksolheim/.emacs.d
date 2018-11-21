@@ -5,8 +5,7 @@
   (setq magit-section-initial-visibility-alist (quote ((untracked . hide)))))
 
 (use-package evil-magit
-  :defer t
-  :commands magit-status
+  :after magit
   :config
   (require 'evil-magit))
 
