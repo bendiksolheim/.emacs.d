@@ -6,9 +6,13 @@
 ;;   (when (memq window-system '(mac ns))
 ;;     (exec-path-from-shell-initialize)))
 
+(define-global-minor-mode custom-linum-relative-global-mode linum-mode
+  (lambda ()
+    (when (not (memq major-mode
+                     (list 'magit-status-mode))))))
+
 (use-package linum-relative
   :config
-  (linum-mode)
-  (linum-relative-global-mode))
+  (custom-linum-relative-global-mode))
 
 (provide 'init-general)
