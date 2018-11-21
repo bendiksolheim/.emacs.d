@@ -1,13 +1,13 @@
-(require 'projectile)
+;; (require 'projectile)
 
 (defun init/osascript-activate (app)
   "Run applescript to activate application"
   (shell-command (format "osascript -e 'tell application \"%s\" to activate'" app)))
 
-(defun init/project-root ()
-  "Get project root without throwing"
-  (let (projectile-require-project-root strict-p)
-    (projectile-project-root)))
+;; (defun init/project-root ()
+;;   "Get project root without throwing"
+;;   (let (projectile-require-project-root strict-p)
+;;     (projectile-project-root)))
 
 (defun init/open-in-intellij ()
   "Opens current file in IntelliJ IDEA"

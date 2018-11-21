@@ -1,11 +1,9 @@
-(require 'req-package)
-
-(req-package haskell-mode
+(use-package haskell-mode
   :mode
   (("\\.hs\\'" . haskell-mode)))
 
-(req-package intero
-  :require flycheck
+(use-package intero
+  :defer t
   :init
   (defun init-intero ()
     (if (and buffer-file-name

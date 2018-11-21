@@ -1,7 +1,4 @@
-(require 'req-package)
-
-(req-package neotree
-  :require evil-leader
+(use-package neotree
   :init
   (setq neo-theme 'nerd)
   :config

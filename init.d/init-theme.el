@@ -1,5 +1,3 @@
-(require 'req-package)
-
 (cond
  ((find-font (font-spec :family "Fira Code Retina"))
   (set-frame-font "Fira Code Retina:pixelsize=16"))
@@ -10,6 +8,7 @@
  ((find-font (font-spec :family "Monaco"))
   (set-frame-font "Monaco:pixelsize=12")))
 
+;; Make ligatures work
 (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
                (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
                (36 . ".\\(?:>\\)")
@@ -40,8 +39,6 @@
     (set-char-table-range composition-function-table (car char-regexp)
                           `([,(cdr char-regexp) 0 font-shape-gstring]))))
 
-(req-package undo-tree)
-
 (defun init/set-fonts ()
   (set-face-attribute 'default nil :height 140))
 
@@ -59,12 +56,12 @@
   (init/set-gui)
   (setq frame-title-format nil))
 
-(req-package doom-themes
-  :require telephone-line all-the-icons
+(use-package all-the-icons)
+
+(use-package doom-themes
   :config
   (load-theme 'doom-one))
 
-(req-package all-the-icons)
 
 (provide 'init-theme)
 

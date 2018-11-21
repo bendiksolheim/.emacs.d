@@ -1,5 +1,3 @@
-(require 'req-package)
-
-(req-package ag)
+(use-package ag)
 
 (provide 'init-ag)

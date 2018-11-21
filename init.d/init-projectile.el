@@ -1,6 +1,4 @@
-(require 'req-package)
-
-(req-package projectile
+(use-package projectile
   :init
   (setq projectile-indexing-method 'alien)
   (setq projectile-enable-caching t)

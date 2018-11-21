@@ -1,6 +1,4 @@
-(require 'req-package)
-
-(req-package vue-mode
+(use-package vue-mode
   :mode
   (("\\.vue\\'" . vue-mode)))
 

@@ -1,6 +1,3 @@
-(require 'all-the-icons)
-(require 'evil)
-
 ;;
 ;; Track window state
 ;;
@@ -170,3 +167,4 @@
                 (:eval (mode-line-fill (mode-line-segment-width (custom-modeline-icon-vc) 2)))
                 ,vc-segment))
 
+(provide 'init-modeline)

@@ -1,6 +1,6 @@
 * .emacs.d
 
-Evil based Emacs config. Uses [[https://www.gnu.org/software/emacs/][req-package]] to load packages and handle dependencies.
+Evil based Emacs config
 
 ** Requirements
 
@@ -17,7 +17,7 @@ Note: I have only tried this on macOS, so it might not work on other platforms. 
 
 #+BEGIN_SRC
 git clone https://github.com/bendiksolheim/.emacs.d
-# Open Emacs, wait till things are installed
+# Open Emacs, wait until things are installed
 # In emacs:
 M-x all-the-icons-install-fonts
 #+END_SRC
