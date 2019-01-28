@@ -59,7 +59,7 @@
         "pi" 'projectile-invalidate-cache
         "pl" 'helm-projectile-switch-project
         "pg" 'projectile-vc
-        "ps" 'helm-project-ag
+        "ps" 'helm-projectile-ag
         "pt" 'neotree-project-dir
         "w/" 'split-window-horizontally
         "w-" 'split-window-vertically
