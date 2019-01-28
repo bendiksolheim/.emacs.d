@@ -9,4 +9,7 @@
   :config
   (require 'evil-magit))
 
+(use-package forge
+  :after magit)
+
 (provide 'init-magit)
