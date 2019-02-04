@@ -58,6 +58,7 @@
 (require 'init-flycheck)
 (require 'init-neotree)
 (require 'init-restclient)
+(require 'init-lsp)
 
 ;; Languages
 (require 'init-elm)
