@@ -9,19 +9,19 @@
   :config
   (evil-define-key 'insert rjsx-mode-map (kbd "C-d") 'rjsx-delete-creates-full-tag))
 
+;; Web-mode does not trigger correct lsp mode, using rjsx-mode for now
+;; (use-package web-mode
+;;   :mode
+;;   (("\\.js\\'" . web-mode)
+;;    ("\\.html\\'" . web-mode)
+;;    ("\\.mustache\\'" . web-mode))
+;;   :config
+;;   (setq web-mode-markup-indent-offset 2
+;;         web-mode-css-indent-offset 2
+;;         web-mode-enable-current-element-highlight t))
+
 (use-package json-mode
   :mode "\\.json\\'")
-
-(use-package tern
-  :defer t
-  :init
-  (add-hook 'js2-mode-hook 'tern-mode)
-  (add-hook 'web-mode-hook 'tern-mode))
-
-;;(use-package company-tern
-  ;;:defer t
-  ;;:init
-  ;;(add-to-list 'company-backends 'company-tern))
 
 (use-package prettier-js
   :init
