@@ -1,4 +1,4 @@
-(setq evil-want-C-u-scroll t)
+;; (setq evil-want-C-u-scroll t)
 
 (use-package evil)
 
