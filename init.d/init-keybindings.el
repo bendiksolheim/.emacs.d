@@ -12,7 +12,9 @@
   (global-set-key (kbd "s--") (lambda () (interactive) (text-scale-decrease 1)))
   (global-set-key (kbd "s-0") (lambda () (interactive) (text-scale-set 0)))
   (global-set-key (kbd "s-j") 'next-buffer)
-  (global-set-key (kbd "s-k") 'previous-buffer))
+  (global-set-key (kbd "s-k") 'previous-buffer)
+  (global-set-key (kbd "M-x") #'helm-M-x)
+  (global-set-key (kbd "C-x C-f") #'helm-find-files))
 
 (defun neotree-project-dir ()
   "Open Neotree  using the git root"
