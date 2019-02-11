@@ -12,4 +12,7 @@
   (define-key company-active-map (kbd "C-k") 'company-select-previous-or-abort)
   (define-key company-active-map (kbd "<tab>") 'company-complete-selection))
 
+(use-package company-box
+  :hook (company-mode . company-box-mode))
+
 (provide 'init-company)
