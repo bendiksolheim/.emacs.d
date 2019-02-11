@@ -68,6 +68,7 @@
 (require 'init-markdown)
 ;;(require 'init-nxml)
 (require 'init-remark)
+(require 'init-typescript)
 (require 'init-vue)
 
 ;; Finally, activate sane key bindings
