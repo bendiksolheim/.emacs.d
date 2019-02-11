@@ -63,6 +63,7 @@
         "pg" 'projectile-vc
         "ps" 'helm-projectile-ag
         "pt" 'neotree-project-dir
+        "u"  'universal-argument
         "w/" 'split-window-horizontally
         "w-" 'split-window-vertically
         "w=" 'balance-windows
