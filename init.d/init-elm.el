@@ -2,12 +2,7 @@
   :mode ("\\.elm\\'" . elm-mode)
   :config
   (setq elm-format-on-save t)
-  (add-hook 'elm-mode-hook
-            (lambda ()
-              (setq-local company-backends
-                          (append
-                            '(company-elm)
-                            company-backends))))
+  (add-to-list 'company-backend 'company-elm)
   (add-hook 'elm-mode-hook 'elm-oracle-setup-completion))
 
 (use-package flycheck-elm
