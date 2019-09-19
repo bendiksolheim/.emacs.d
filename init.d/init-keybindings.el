@@ -16,7 +16,9 @@
   (global-set-key (kbd "s-j") 'next-buffer)
   (global-set-key (kbd "s-k") 'previous-buffer)
   (global-set-key (kbd "M-x") #'helm-M-x)
-  (global-set-key (kbd "C-x C-f") #'helm-find-files))
+  (global-set-key (kbd "C-x C-f") #'helm-find-files)
+  (global-set-key (kbd "M-.") #'xref-find-definitions)
+  (global-set-key (kbd "M--") #'xref-find-references))
 
 (defun neotree-project-dir ()
   "Open Neotree  using the git root"
