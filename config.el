@@ -1,6 +1,7 @@
 (setq inhibit-splash-screen t
       initial-scratch-message nil
-      initial-major-mode 'org-mode)
+      initial-major-mode 'org-mode
+      debug-on-error t)
 
 ;; Expand load-dir to include custom packages
 (add-to-list 'load-path (expand-file-name "init.d" (file-name-directory load-file-name)))
