@@ -9,3 +9,4 @@ abbrev_defs
 *.elc
 eshell
 network-security.data
+url
