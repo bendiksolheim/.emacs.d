@@ -24,8 +24,8 @@
 
 (load "~/.emacs.d/init-functions.el")
 
-(setenv "PATH" (concat (getenv "PATH") ":~/.npm-package/bin"))
-(setq exec-path (append exec-path '("~/.npm-package/bin")))
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
