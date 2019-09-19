@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package dumb-jump
   :config
   (init/evil-leader-group "g" "goto")

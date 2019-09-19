@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package nxml-mode
   :mode ("\\.pom$" . nxml-mode)
   :magic ("<\\?xml" . nxml-mode)

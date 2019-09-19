@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package avy
   :config
   (setq avy-background t)

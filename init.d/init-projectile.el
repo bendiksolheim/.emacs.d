@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package projectile
   :init
   (setq projectile-indexing-method 'alien)

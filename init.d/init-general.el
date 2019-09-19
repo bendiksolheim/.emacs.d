@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package s)
 (use-package f)
 (use-package let-alist)

@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package ace-window
   :config
   (setq aw-dispatch-always t)

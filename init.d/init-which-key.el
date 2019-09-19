@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package which-key
   :init
   (setq which-key-idle-delay 0.3
