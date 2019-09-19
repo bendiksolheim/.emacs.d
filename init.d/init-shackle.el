@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package shackle
   :config
   (shackle-mode 1)

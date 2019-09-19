@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package kotlin-mode
   :mode
   ("\\.kt\\'" . kotlin-mode)

@@ -1,3 +1,4 @@
+(require 'evil)
 ;;
 ;; Track window state
 ;;
@@ -10,7 +11,7 @@
     (setq mode-line-selected-window (frame-selected-window))))
 
 (add-hook 'window-configuration-change-hook #'mode-line--set-selected-window)
-(add-hook 'focus-in-hook #'mode-line--set-selected-window)
+(add-hook 'after-focus-change-function #'mode-line--set-selected-window)
 
 (defadvice select-window (after mode-line-select-window activate)
   "Set telephone-line's selected window value for use in determining the active mode-line."

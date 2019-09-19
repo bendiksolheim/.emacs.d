@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package neotree
   :init
   (setq neo-theme 'nerd)

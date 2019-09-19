@@ -1,5 +1,7 @@
-(use-package vue-mode
-  :mode
-  (("\\.vue\\'" . vue-mode)))
+(require 'use-package)
+
+;(use-package vue-mode
+;  :mode
+;  (("\\.vue\\'" . vue-mode)))
 
 (provide 'init-vue)

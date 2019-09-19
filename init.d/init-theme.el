@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (cond
  ((find-font (font-spec :family "Fira Code Retina"))
   (set-frame-font "Fira Code Retina:pixelsize=16"))
@@ -38,6 +40,10 @@
   (dolist (char-regexp alist)
     (set-char-table-range composition-function-table (car char-regexp)
                           `([,(cdr char-regexp) 0 font-shape-gstring]))))
+
+(add-hook 'helm-major-mode-hook
+          (lambda ()
+            (setq auto-composition-mode nil)))
 
 (defun init/set-fonts ()
   (set-face-attribute 'default nil :height 140))

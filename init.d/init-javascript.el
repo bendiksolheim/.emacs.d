@@ -1,8 +1,10 @@
+(require 'use-package)
+
 (use-package web-mode
   :mode "\\.jsx?$"
   :init
   (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'"))
-        web-mode-markup-indent-offset 4))
+        web-mode-markup-indent-offset 2))
 
 ;; (use-package js2-mode
 ;;   :mode "\\.jsx?\\'"

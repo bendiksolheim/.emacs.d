@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (setq evil-want-C-u-scroll t)
 
 (use-package evil)

@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package haskell-mode
   :mode
   (("\\.hs\\'" . haskell-mode)))

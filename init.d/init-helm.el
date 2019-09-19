@@ -1,3 +1,5 @@
+(require 'use-package)
+
 (use-package helm
   :config
   (require 'helm-config)
