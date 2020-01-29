@@ -2,7 +2,8 @@
 
 (use-package ace-window
   :config
-  (setq aw-dispatch-always t)
+  (setq aw-dispatch-always t
+        aw-scope 'frame)
   (defvar aw-dispatch-alist
     '((?x aw-delete-window "Ace - Delete Window")
       (?m aw-swap-window "Ace - Swap Window")
