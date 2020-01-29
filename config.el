@@ -14,6 +14,9 @@
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
 (package-initialize)
 
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
@@ -24,9 +27,6 @@
   (setq use-package-always-ensure t))
 
 (load "~/.emacs.d/init-functions.el")
-
-(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
-(setq exec-path (append exec-path '("/usr/local/bin")))
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
