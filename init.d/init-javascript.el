@@ -23,11 +23,6 @@
 ;;   :mode "\\.json\\'")
 
 (use-package prettier-js
-  :init
-  (setq prettier-js-args '(
-                           "--single-quote"
-                           "--tab-width" "2"
-                           ))
   :hook ((js2-mode . prettier-js-mode)
          (typescript-mode . prettier-js-mode)
          (css-mode . prettier-js-mode)))
