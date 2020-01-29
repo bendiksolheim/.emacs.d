@@ -17,8 +17,8 @@
   (global-set-key (kbd "s-k") 'previous-buffer)
   (global-set-key (kbd "M-x") #'helm-M-x)
   (global-set-key (kbd "C-x C-f") #'helm-find-files)
-  (global-set-key (kbd "M-.") #'xref-find-definitions)
-  (global-set-key (kbd "M--") #'xref-find-references))
+  (global-set-key (kbd "M--") 'xref-find-definitions)
+  (global-set-key (kbd "M-+") 'xref-find-references))
 
 (defun neotree-project-dir ()
   "Open Neotree  using the git root"
@@ -43,6 +43,7 @@
                        ("c" . "comment")
                        ("e" . "emacs")
                        ("f" . "file")
+                       ("l" . "lsp")
                        ("m" . "major")
                        ("p" . "project")
                        ("w" . "window")))
@@ -61,11 +62,17 @@
         "cl" 'comment-line
         "ec" 'init/edit-emacs-config
         "fr" 'revert-buffer
+        "l?" 'lsp-find-definition
+        "l." 'lsp-goto-implementation
+        "lf" 'lsp-format-buffer
+        "lo" 'lsp-organize-imports
+        "lr" 'lsp-rename
         "pf" 'helm-projectile-find-file
         "pi" 'projectile-invalidate-cache
         "pl" 'helm-projectile-switch-project
-        "pg" 'projectile-vc
+        "pg" 'helm-projectile-find-file-dwim
         "ps" 'helm-projectile-ag
+        "pv" 'projectile-vc
         "pt" 'neotree-project-dir
         "u"  'universal-argument
         "w/" 'split-window-horizontally
