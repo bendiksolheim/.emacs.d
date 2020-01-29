@@ -5,7 +5,8 @@
   (require 'helm-config)
   (bind-key "C-j" 'helm-next-line helm-map)
   (bind-key "C-k" 'helm-previous-line helm-map)
-  (setq helm-display-function 'pop-to-buffer)
+  (setq helm-display-function 'pop-to-buffer
+        helm-ff-allow-non-existing-file-at-point t)
   (helm-mode 1))
 
 (use-package helm-projectile
