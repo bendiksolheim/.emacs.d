@@ -16,6 +16,7 @@
           projectile-root-top-down-recurring
           projectile-root-bottom-up))
   :config
+  (add-to-list 'projectile-globally-ignored-directories "*docs")
   (projectile-mode 1)
   (projectile-register-project-type 'npm '("package.json")
                                     :compile "npm install"
