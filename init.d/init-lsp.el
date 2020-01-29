@@ -4,6 +4,8 @@
   :ensure t
   :init
   (add-hook 'js2-mode-hook 'lsp)
+  (add-hook 'kotlin-mode-hook 'lsp)
+  (add-hook 'typescript-mode-hook 'lsp)
   :config
   (require 'lsp-clients)
   (add-to-list 'lsp-language-id-configuration '(rjsx-mode . "javascript"))
