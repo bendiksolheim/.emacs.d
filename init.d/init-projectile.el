@@ -2,7 +2,8 @@
 
 (use-package projectile
   :init
-  (setq projectile-enable-caching t
+  (setq projectile-indexing-method 'hybrid
+        projectile-enable-caching t
         projectile--mode-line nil
         projectile-project-root-files
         '(".projectile"
