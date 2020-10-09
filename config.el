@@ -15,6 +15,7 @@
 (package-initialize)
 
 (when (memq window-system '(mac ns x))
+  (setq exec-path-from-shell-variables '("PATH"  "SOURCEKIT_TOOLCHAIN_PATH"))
   (exec-path-from-shell-initialize))
 
 (unless (package-installed-p 'use-package)
@@ -71,6 +72,8 @@
 (require 'init-markdown)
 ;;(require 'init-nxml)
 (require 'init-remark)
+(require 'init-rust)
+(require 'init-swift)
 (require 'init-typescript)
 ;(require 'init-vue)
 
