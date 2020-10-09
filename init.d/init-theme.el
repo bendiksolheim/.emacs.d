@@ -2,7 +2,7 @@
 
 (cond
  ((find-font (font-spec :family "Fira Code Retina"))
-  (set-frame-font "Fira Code Retina:pixelsize=16"))
+  (set-frame-font "Fira Code Retina:pixelsize=18"))
  ((find-font (font-spec :family "Hasklig"))
   (set-frame-font "Hasklig:pixelsize=12"))
  ((find-font (font-spec :family "Menlo"))
