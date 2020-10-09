@@ -64,6 +64,7 @@
         "fr" 'revert-buffer
         "l?" 'lsp-find-definition
         "l." 'lsp-goto-implementation
+        "la" 'lsp-execute-code-action
         "lf" 'lsp-format-buffer
         "lo" 'lsp-organize-imports
         "lr" 'lsp-rename
